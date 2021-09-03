@@ -24,12 +24,12 @@ class MainActivity : AppCompatActivity() {
         data?.let { _data ->
             val url = _data.toString()
             val firstPath = _data.pathSegments[0]
-            val secondPath = _data.pathSegments[1]
 
             if (firstPath == "list") {
-                if (secondPath != null) {
+                val itemId = _data.pathSegments[1]
+                if (itemId != null) {
                     val intent = Intent(this@MainActivity, DetailActivity::class.java)
-                    intent.putExtra("id", secondPath)
+                    intent.putExtra("id", itemId)
                     startActivity(intent)
                 } else {
                     val intent = Intent(this@MainActivity, ListActivity::class.java)
