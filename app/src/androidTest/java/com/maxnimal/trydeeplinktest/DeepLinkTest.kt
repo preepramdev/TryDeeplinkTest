@@ -3,6 +3,8 @@ package com.maxnimal.trydeeplinktest
 import android.content.Intent
 import android.net.Uri
 import androidx.test.espresso.intent.Intents
+import androidx.test.espresso.intent.Intents.intended
+import androidx.test.espresso.intent.matcher.IntentMatchers.hasComponent
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.rule.ActivityTestRule
 import org.junit.After
@@ -40,6 +42,7 @@ class DeepLinkTest {
         activityTestRule.launchActivity(intent)
 
         // Then
+        intended(hasComponent(ListActivity::class.java.name))
     }
 
     @Test
@@ -54,5 +57,6 @@ class DeepLinkTest {
         activityTestRule.launchActivity(intent)
 
         // Then
+        intended(hasComponent(DetailActivity::class.java.name))
     }
 }

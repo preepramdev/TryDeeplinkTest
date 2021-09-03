@@ -26,11 +26,16 @@ class MainActivity : AppCompatActivity() {
             val firstPath = _data.pathSegments[0]
 
             if (firstPath == "list") {
-                val itemId = _data.pathSegments[1]
-                if (itemId != null) {
-                    val intent = Intent(this@MainActivity, DetailActivity::class.java)
-                    intent.putExtra("id", itemId)
-                    startActivity(intent)
+                if (_data.pathSegments.size > 1) {
+                    val itemId = _data.pathSegments[1]
+                    if (itemId != null) {
+                        val intent = Intent(this@MainActivity, DetailActivity::class.java)
+                        intent.putExtra("id", itemId)
+                        startActivity(intent)
+                    } else {
+                        val intent = Intent(this@MainActivity, ListActivity::class.java)
+                        startActivity(intent)
+                    }
                 } else {
                     val intent = Intent(this@MainActivity, ListActivity::class.java)
                     startActivity(intent)
