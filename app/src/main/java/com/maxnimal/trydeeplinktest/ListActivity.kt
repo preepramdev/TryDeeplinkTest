@@ -14,6 +14,11 @@ class ListActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
+        if (savedInstanceState == null) {
+            supportFragmentManager.beginTransaction()
+                .add(R.id.contentContainer, ListFragment.newInstance())
+                .commit()
+        }
 
     }
 }
